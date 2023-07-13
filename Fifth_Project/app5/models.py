@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Product(models.Model):
@@ -17,6 +17,9 @@ class Book(models.Model):
     qty = models.IntegerField()
     is_published = models.BooleanField(default= True)
     is_active = models.BooleanField(default= True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    updated_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     class Meta:
         db_table = "book"
